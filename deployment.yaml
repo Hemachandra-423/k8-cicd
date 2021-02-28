@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: devopstraining
+  name: devopstraining
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devopstraining
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: devopstraining
+    spec:
+      imagePullSecrets:
+        - name: mytrainregistrykey
+      containers:
+      - image: mohanraj123/tomcattrain:8
+        name: devopstraining-image
+        ports:
+        - containerPort: 8080
+          name: http
+        resources: {}
+status: {}
